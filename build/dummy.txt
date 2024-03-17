@@ -1,1 +1,1 @@
-Dummy file to ensure this folder gets committed - all build files go here.
+Dummy file to ensure this folder gets committed - all build files go in this folder.
