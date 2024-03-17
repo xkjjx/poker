@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Deck {
     private ArrayList<Card> deck= new ArrayList<Card>();
-    private void initDeck(){
+
+    public void resetDeck(){
         deck.clear();
         for(int i = 0; i < 4; i++){
             for(int j = 0; j < 13; j++){
@@ -15,7 +16,7 @@ public class Deck {
     }
 
     public Deck(){
-        initDeck();
+        resetDeck();
     }
 
     public String toString(){
@@ -40,26 +41,34 @@ public class Deck {
         return drawedCard;
     }
 
+    public void burn(){
+        deck.remove(deck.size() - 1);
+    }
+
     public ArrayList<Card> drawRiver(){
         ArrayList<Card> river = new ArrayList<>();
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 3; i++){
             river.add(this.draw());
         }
+        this.burn();
+        river.add(this.draw());
+        this.burn();
+        river.add(this.draw());
         return river;
     }
 
-    public ArrayList<Card> drawHandForPlayer(){
-        ArrayList<Card> cards = new ArrayList<>();
-        cards.add(this.draw());
-        cards.add(this.draw());
-        return cards;
-    }
 
     public ArrayList<ArrayList<Card>> drawHandsForPlayers(int numPlayers){
         ArrayList<ArrayList<Card>> playerCards = new ArrayList<>();
         for(int i = 0 ; i < numPlayers; i++){
-            playerCards.add(drawHandForPlayer());
+            ArrayList<Card> temp = new ArrayList<>();
+            temp.add(this.draw());
+            playerCards.add(temp);
         }
+        for(int i = 0 ; i < numPlayers; i++){
+            playerCards.get(i).add(this.draw());
+        }
+        this.burn();
         return playerCards;
     }
 }
