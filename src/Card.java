@@ -1,31 +1,55 @@
-public class Card {
-    private String Suit;
-    private char level;
+import java.util.Map;
 
-    public Card(String Suit,char level){
+public class Card {
+    private int Suit;
+    private int level;
+    private static Map<Integer,String> numToStringMap= Map.of(1,"One",2,"Two",3,"Three",4,"Four",5,"Five",6,"Siz",7,"Seven",8,"Eight",9,"Nine",10,"Ten");
+    public Card(int Suit, int level){
         this.Suit = Suit;
         this.level = level;
     }
-    public String getSuit(){
+    public int getSuit(){
         return this.Suit;
     }
 
-    public char getLevel(){
+    public String getDescriptiveSuit(boolean concise){
+        switch(Suit){
+            case(0): return concise ? "H" : "Hearts";
+            case(1): return concise ? "D" : "Diamonds";
+            case(2): return concise ? "S" : "Spades";
+            case(3): return concise ? "C" : "Clubs";
+            default: return "";
+        }
+    }
+
+    public String getDescriptiveSuit(){
+        return getDescriptiveSuit(false);
+    }
+    
+    
+    public int getLevel(){
         return this.level;
     }
 
-    public String getDescriptiveLevel(){
+    public String getDescriptiveLevel(boolean concise){
         switch(level){
-            case(12): return "K";
-            case(11): return "Q";
-            case(10): return "J";
-            case(0): return "A";
-            default: return Integer.toString(level + 1);
+            case(12): return concise ? "A" : "Ace";
+            case(11): return concise ? "K" : "King";
+            case(10): return concise ? "Q" : "Queen";
+            case(9): return concise ? "J" : "Jack";
+            default: return concise ? Integer.toString(level + 2) : numToStringMap.get(level + 2);
         }
     }
 
     public boolean highCardBeat(Card other){
-        int otherCardLevel = other.level == 0 ? 14 : other.level;
-        return this.level > otherCardLevel;
+        return this.level > other.level;
+    }
+
+    public String toString(){
+        return toString(false);
+    }
+
+    public String toString(boolean concise){
+        return getDescriptiveLevel(concise) + (concise ? "":" of ") + getDescriptiveSuit(concise);
     }
 }
