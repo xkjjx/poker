@@ -50,6 +50,6 @@ public class Card {
     }
 
     public String toString(boolean concise){
-        return getDescriptiveLevel(concise) + (concise ? "":" of ") + getDescriptiveSuit(concise);
+        return getDescriptiveLevel(concise) + (concise ? "|":" of ") + getDescriptiveSuit(concise);
     }
 }

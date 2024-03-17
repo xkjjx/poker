@@ -11,6 +11,7 @@ public class Deck {
                 deck.add(new Card(i,j));
             }
         }
+        //this.shuffle();
     }
 
     public Deck(){
@@ -47,17 +48,17 @@ public class Deck {
         return river;
     }
 
-    public Card[] drawHandsForPlayer(){
-        Card[] cards = new Card[2];
-        cards[0] = this.draw();
-        cards[1] = this.draw();
+    public ArrayList<Card> drawHandForPlayer(){
+        ArrayList<Card> cards = new ArrayList<>();
+        cards.add(this.draw());
+        cards.add(this.draw());
         return cards;
     }
 
-    public ArrayList<Card[]> drawHandsForPlayers(int numPlayers){
-        ArrayList<Card[]> playerCards = new ArrayList<>();
+    public ArrayList<ArrayList<Card>> drawHandsForPlayers(int numPlayers){
+        ArrayList<ArrayList<Card>> playerCards = new ArrayList<>();
         for(int i = 0 ; i < numPlayers; i++){
-            playerCards.add(this.getHandsForPlayer());
+            playerCards.add(drawHandForPlayer());
         }
         return playerCards;
     }
