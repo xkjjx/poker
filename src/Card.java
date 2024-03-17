@@ -3,7 +3,7 @@ import java.util.Map;
 public class Card {
     private int Suit;
     private int level;
-    private static Map<Integer,String> numToStringMap= Map.of(1,"One",2,"Two",3,"Three",4,"Four",5,"Five",6,"Siz",7,"Seven",8,"Eight",9,"Nine",10,"Ten");
+    private static Map<Integer,String> numToStringMap= Map.of(1,"One",2,"Two",3,"Three",4,"Four",5,"Five",6,"Six",7,"Seven",8,"Eight",9,"Nine",10,"Ten");
     public Card(int Suit, int level){
         this.Suit = Suit;
         this.level = level;
