@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player {
     private ArrayList<Card> cards;
@@ -31,6 +32,14 @@ public class Player {
         this.cards = inputCards;
     }
 
+    public ArrayList<Card> getCards(){
+        return this.cards;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
     public String toString(){
         return String.format("Name: %s\nCoins: %d\nDeck: %s %s",this.name, this.coinCount, this.cards.get(0).toString(true),this.cards.get(1).toString(true));
     }
@@ -50,23 +59,23 @@ public class Player {
     }
 
     public ArrayList<Integer> promptDecision(){
-//         ArrayList<Integer> returnList = new ArrayList<>();
-//         System.out.println("Enter call/check(C), raise(R), fold(F)");
-//         byte[] input = new byte[1];
-//         try{
-//             System.in.read(input);
-//         }
-//         catch(Exception e){
-//             e.printStackTrace();
-//         }
-//         char inputChar = (char) input[0];
-//         int inputAmount;
-// ;        switch(inputChar){
-//             case('C')
-//         }
+        ArrayList<Integer> returnList = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(String.format("What would you(%s) like to do?", this.name));
+        System.out.println("0. Check/Call");
+        System.out.println("1. Raise");
+        System.out.println("2. Fold");
+        int decision = scanner.nextInt();
+        returnList.add(decision);
+        if(decision == 1){
+            System.out.println("How much would you like to raise?");
+            int raiseAmount = scanner.nextInt();
+            returnList.add(raiseAmount);
+        }
+
 
         
-
+        return returnList;
     }
 
 }
