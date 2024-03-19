@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+
 
 
 
@@ -12,11 +14,15 @@ public class Deck {
                 deck.add(new Card(i,j));
             }
         }
-        //this.shuffle();
+        this.shuffle();
     }
 
     public Deck(){
         resetDeck();
+    }
+
+    public void numericalSort(){
+        deck.sort(null);
     }
 
     public String toString(){
@@ -32,7 +38,7 @@ public class Deck {
     }
 
     public void shuffle(){
-        //TODO
+        Collections.shuffle(deck);
     }
 
     public Card draw(){

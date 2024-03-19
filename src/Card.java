@@ -1,6 +1,6 @@
 import java.util.Map;
 
-public class Card {
+public class Card implements Comparable<Card>{
     private int Suit;
     private int level;
     private static Map<Integer,String> numToStringMap= Map.of(1,"One",2,"Two",3,"Three",4,"Four",5,"Five",6,"Six",7,"Seven",8,"Eight",9,"Nine",10,"Ten");
@@ -51,5 +51,17 @@ public class Card {
 
     public String toString(boolean concise){
         return getDescriptiveLevel(concise) + (concise ? "|" : " of ") + getDescriptiveSuit(concise);
+    }
+
+    public int compareTo(Card other){
+        if(this.level > other.level){
+            return 1;
+        }
+        else if(this.level < other.level){
+            return -1;
+        }
+        else{
+            return 0;
+        }
     }
 }

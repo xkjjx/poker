@@ -2,30 +2,44 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player {
+    private static int playerCount = 0;
+    private int playerId;
     private ArrayList<Card> cards;
     private String name;
     private int coinCount;
 
     public Player(String name, ArrayList<Card> cards){
+        playerCount++;
+        this.playerId = playerCount;
         this.name = name;
         this.cards = cards;
         this.coinCount = 0;
     }
 
     public Player(String name){
+        playerCount++;
+        this.playerId = playerCount;
         this.name = name;
         this.coinCount = 0;
     }
 
     public Player(String name, int coinCount){
+        playerCount++;
+        this.playerId = playerCount;
         this.name = name;
         this.coinCount = coinCount;
     }
 
     public Player(String name, ArrayList<Card> cards, int coinCount){
+        playerCount++;
+        this.playerId = playerCount;
         this.name = name;
         this.cards = cards;
         this.coinCount = coinCount;
+    }
+
+    public int getId(){
+        return this.playerId;
     }
 
     public  void setCards(ArrayList<Card> inputCards){
